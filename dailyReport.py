@@ -3,7 +3,7 @@ from time import sleep
 import pywhatkit as pwk
 from datetime import datetime
 from login import voyage_login
-from utils import getPrimarySales, getSecondarySales, getStockReport, getReportsData
+from utils import getPrimarySales, getSecondarySales, getStockReport, getReportsData, websapReport
 
 primarySalePath = "C:/Users/HP/OneDrive/Desktop/voyage-reports/primary-sales.xlsx"
 secondarySalePath = "C:/Users/HP/OneDrive/Desktop/voyage-reports/secondary-sales.xlsx"
@@ -46,17 +46,25 @@ else:
     sleep(5)
     text = getReportsData.getData()
 
-sleep(4)
+#Getting Cash Details from Websap
+balanceReport = websapReport.getBalanceFromWebSap()
+
+# Getting Current Date
+sleep(5)
 dt = datetime.now()
 currentHour = dt.hour
 currentMinute = dt.minute
 
 # Sending Reports Data to WhatsApp Contact
 pwk.sendwhatmsg("+923003304931", text, currentHour, currentMinute + 1)
-
-sleep(40)
+sleep(5)
+pwk.sendwhatmsg("+923003304931", balanceReport, currentHour, currentMinute + 2)
+sleep(5)
 pwk.sendwhatmsg("+923007327931", text, currentHour, currentMinute + 3)
+sleep(5)
+pwk.sendwhatmsg("+923007327931", balanceReport, currentHour, currentMinute + 4)
 
+# Removing Files and Directory
 os.remove(primarySalePath)
 os.remove(secondarySalePath)
 os.remove(stockReportPath)
