@@ -55,6 +55,8 @@ dt = datetime.now()
 currentHour = dt.hour
 currentMinute = dt.minute
 
+print(text)
+print(balanceReport)
 # Sending Reports Data to WhatsApp Contact
 pwk.sendwhatmsg("+923003304931", text, currentHour, currentMinute + 1)
 sleep(5)

@@ -25,24 +25,39 @@ def getCurrentStockReport():
     pag.moveTo(currentStockReport.x, currentStockReport.y, 0.5)
     pag.click()
 
-    # Navigation to Calender for Month Selection
-    sleep(9)
-    pag.moveTo(993, 525) # Mouse Position for month
-    pag.click()
-    if dt.month == 12:
-        pag.typewrite("1")
-        pag.moveTo(1047, 523) # Mouse Position for year
-        sleep(1)
-        pag.click()
-        pag.typewrite("2023")
-    else:
-        pag.typewrite(f"${dt.month}")
+    # Date Selection for current stock report
 
-    # Current Day Selection
-    sleep(1)
-    pag.moveTo(1013, 525) # Mouse Position for date
+    sleep(3)
+    stockYear = pag.locateCenterOnScreen("D:/_projects/python/voyage/media/stock-year.png", confidence=0.9)
+    pag.moveTo(stockYear.x - 24, stockYear.y, 0.2) # Date Selection
     pag.click()
     pag.typewrite("1")
+
+    sleep(2)
+    pag.moveTo(stockYear.x - 38, stockYear.y, 0.2) # Month Selection
+    pag.click()
+
+    if dt.month == 12:
+        pag.typewrite("1")
+    else:
+        pag.typewrite(f"${dt.month + 1}")
+
+    # Selection of summer stock warehouse
+
+    sleep(2)
+    warehousebutton = pag.locateCenterOnScreen(f"{mediapath}/add-button.png", confidence=0.9)
+    pag.moveTo(warehousebutton.x, warehousebutton.y)
+    pag.click()
+
+    sleep(2)
+    addStock = pag.locateCenterOnScreen(f"{mediapath}/summer-stock.png", confidence=0.9)
+    pag.moveTo(addStock.x, addStock.y)
+    pag.click()
+
+    sleep(1)
+    closeButton = pag.locateCenterOnScreen(f"{mediapath}/stock-close-button.png", confidence=0.9)
+    pag.moveTo(closeButton)
+    pag.click()
 
     # Navigation to Preview Button
     sleep(1)

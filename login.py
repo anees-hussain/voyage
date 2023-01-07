@@ -27,7 +27,7 @@ def voyage_login():
         pag.hotkey("Tab")
 
         sleep(2)
-        pag.typewrite("Coke@896")
+        pag.typewrite("Roar@357")
 
         sleep(3)
         VoyageLoginButton = pag.locateCenterOnScreen(f"{mediapath}/voyage-login-button.png", confidence=0.9)

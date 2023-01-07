@@ -55,7 +55,7 @@ def getStockData():
     totalPhyStock = iterate_column(workbook_path=stockReport, column_index=7)
     totalUcStock = iterate_column(workbook_path=stockReport, column_index=9)
     totalStockAmount = iterate_column(workbook_path=stockReport, column_index=13)
-    stockDays = round((totalUcStock / 16400) * 26)
+    stockDays = round((totalUcStock / 19126) * 26)
     
     print = f"""Total Stock (PHC): {totalPhyStock}
 Total Stock (UC): {totalUcStock}

@@ -23,14 +23,15 @@ def getBalanceFromWebSap():
 
         # Logging in using credentials
         driver.find_element("xpath", "//input[@name='UserName']").send_keys("DPKMF001")
-        driver.find_element("xpath", "//input[@name='Password']").send_keys("Coke@896")
+        driver.find_element("xpath", "//input[@name='Password']").send_keys("Roar@357")
         driver.find_element("xpath", "//button[@id='btnLogin']").click()
 
         balance = driver.find_element("xpath", "//table[@class='table table-striped']").text
         convertedBalance = balance.split(" ")
-        totalLimit = convertedBalance[2]
-        availableCash = convertedBalance[8]
+        totalLimit = convertedBalance[2].split(".")[0].replace(",", "")
+        availableCash = convertedBalance[8].split(".")[0].replace(",", "")
 
+        driver.quit()
         return f"Total Limit: {totalLimit}\nTotal Cash Available in Company: {availableCash}"
 
     systemTray = pag.locateCenterOnScreen(f"{mediapath}/system-tray.png", confidence=0.9)
@@ -60,7 +61,7 @@ def getBalanceFromWebSap():
         pag.moveTo(vpnConnectButton.x, vpnConnectButton.y, 0.5)
         pag.click()
 
-        sleep(10)
+        sleep(15)
         proceedButton = pag.locateCenterOnScreen(f"{mediapath}/proceed.png", confidence=0.9)
         pag.moveTo(proceedButton.x, proceedButton.y, 0.5)
         pag.click()
