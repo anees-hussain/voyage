@@ -58,13 +58,13 @@ currentMinute = dt.minute
 print(text)
 print(balanceReport)
 # Sending Reports Data to WhatsApp Contact
-pwk.sendwhatmsg("+923003304931", text, currentHour, currentMinute + 1)
+pwk.sendwhatmsg("+923003304931", text, currentHour, currentMinute + 2)
 sleep(5)
-pwk.sendwhatmsg("+923003304931", balanceReport, currentHour, currentMinute + 2)
+pwk.sendwhatmsg("+923003304931", balanceReport, currentHour, currentMinute + 3)
 sleep(5)
-pwk.sendwhatmsg("+923007327931", text, currentHour, currentMinute + 3)
+pwk.sendwhatmsg("+923007327931", text, currentHour, currentMinute + 4)
 sleep(5)
-pwk.sendwhatmsg("+923007327931", balanceReport, currentHour, currentMinute + 4)
+pwk.sendwhatmsg("+923007327931", balanceReport, currentHour, currentMinute + 5)
 
 # Removing Files and Directory
 os.remove(primarySalePath)

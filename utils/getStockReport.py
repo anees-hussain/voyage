@@ -33,7 +33,7 @@ def getCurrentStockReport():
     pag.click()
     pag.typewrite("1")
 
-    sleep(2)
+    sleep(4)
     pag.moveTo(stockYear.x - 38, stockYear.y, 0.2) # Month Selection
     pag.click()
 
